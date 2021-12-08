@@ -6,14 +6,29 @@ import Login from './pages/Login'
 import SupervisorQueue from './pages/SupervisorQueue'
 import HrQueue from './pages/HrQueue'
 import RateeAssessment from './pages/RateeAssessment'
+import { useLocation } from 'react-router-dom'
 
 // Components
 import Navigation from './components/Navbar';
 
 function App() {
+
+  let id = useLocation().pathname
+  console.log(id)
+
+  const Navbar = () => {
+    if (id === '/Login') {
+      return null
+    }
+    else {
+      return <Navigation />
+
+    }
+  }
+
   return (
     <div className="App">
-      <Navigation />
+      <Navbar />
       <Container>
         <Routes>
           <Route path="/Login" element={<Login />} />

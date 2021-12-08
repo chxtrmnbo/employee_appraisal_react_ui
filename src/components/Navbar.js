@@ -11,7 +11,7 @@ const Navigation = () => {
     ];
 
     return (
-        <div>
+        <>
             <Navbar style={{ backgroundColor: "#4852b0" }} variant="dark" expand="lg">
                 <Container>
                     <Navbar.Brand href="#home">
@@ -40,14 +40,14 @@ const Navigation = () => {
                                 ))}
                             </NavDropdown>
 
-                            <Nav.Link href="#home">
-                                <span className="ms-3">LOGOUT</span>
-                            </Nav.Link>
+                            <Link className="text-decoration-none text-muted " to="/Login">
+                                LOGOUT
+                            </Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-        </div>
+        </>
     );
 };
 export default Navigation;
