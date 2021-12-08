@@ -15,7 +15,7 @@ export default function UserInfo() {
                                 <span> Employee Name:</span>
                             </Col>
                             <Col>
-                                <span> Employee Name:</span>
+                                <span> John Snow</span>
                             </Col>
                         </Row>
                     </Col>
@@ -23,10 +23,10 @@ export default function UserInfo() {
                     <Col className="p-3 border border-1">
                         <Row>
                             <Col>
-                                <span> Employee Name:</span>
+                                <span> Job Title:</span>
                             </Col>
                             <Col>
-                                <span> Employee Name:</span>
+                                <span> Developer</span>
                             </Col>
                         </Row>
                     </Col>
@@ -35,10 +35,10 @@ export default function UserInfo() {
                     <Col className="p-3 border border-1">
                         <Row>
                             <Col className="">
-                                <span> Employee Name:</span>
+                                <span> Supervisor/Reviewer:</span>
                             </Col>
                             <Col>
-                                <span> Employee Name:</span>
+                                <span>Emma Eloise</span>
                             </Col>
                         </Row>
                     </Col>
@@ -46,10 +46,10 @@ export default function UserInfo() {
                     <Col className="p-3  border border-1">
                         <Row>
                             <Col>
-                                <span> Employee Name:</span>
+                                <span> Reviewed:</span>
                             </Col>
                             <Col>
-                                <span> Employee Name:</span>
+                                <span> 10/12/2021</span>
                             </Col>
                         </Row>
                     </Col>

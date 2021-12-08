@@ -1,8 +1,9 @@
 import React from 'react'
-import { Row, Col, Card, Form } from 'react-bootstrap'
+import { Row, Col, Card, Button } from 'react-bootstrap'
 import Title from '../components/Title'
 import FormTable from '../components/FormTable'
 import UserInfo from '../components/UserInfo'
+import CommentBox from '../components/CommentBox'
 export default function RateeAssessment() {
     return (
         <>
@@ -28,7 +29,16 @@ export default function RateeAssessment() {
                     </Card>
                 </Col>
             </Row>
-
+            <Row>
+                <Col className="mt-5 mb-5">
+                    <CommentBox title="Ratee's Comment" />
+                </Col>
+            </Row>
+            <Row>
+                <Col xl="2 offset-10" className="d-grid">
+                    <Button className="bg-primary text-white px-5" type="submit">Submit</Button>
+                </Col>
+            </Row>
         </>
     )
 }

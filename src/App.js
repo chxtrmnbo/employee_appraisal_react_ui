@@ -6,6 +6,7 @@ import Login from './pages/Login'
 import SupervisorQueue from './pages/SupervisorQueue'
 import HrQueue from './pages/HrQueue'
 import RateeAssessment from './pages/RateeAssessment'
+import SupervisorReview from './pages/SupervisorReview'
 import { useLocation } from 'react-router-dom'
 
 // Components
@@ -35,6 +36,8 @@ function App() {
           <Route path="/Supervisor" element={<SupervisorQueue />} />
           <Route path="/Hr" element={<HrQueue />} />
           <Route path="/Assessment" element={<RateeAssessment />} />
+          <Route path="/SupervisorReview" element={<SupervisorReview />} />
+
         </Routes>
       </Container>
     </div>

@@ -10,7 +10,7 @@ export default function SupervisorQueue() {
         <>
             <Row className="mt-5">
                 <Col>
-                    <Title title="Performance Appraisal" subtitle="Lorem Ipsum dolor" />
+                    <Title title="Yearly Performance Appraisal" subtitle="For Review" />
                 </Col>
             </Row>
             <Row className="mt-5">
