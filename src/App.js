@@ -6,15 +6,31 @@ import Login from './pages/Login'
 import SupervisorQueue from './pages/SupervisorQueue'
 import HrQueue from './pages/HrQueue'
 import RateeAssessment from './pages/RateeAssessment'
-import Error404 from './pages/Error404Page'
+
+import SupervisorReview from './pages/SupervisorReview'
+import { useLocation } from 'react-router-dom'
 
 // Components
 import Navigation from './components/Navbar';
 
 function App() {
+
+  let id = useLocation().pathname
+  console.log(id)
+
+  const Navbar = () => {
+    if (id === '/Login') {
+      return null
+    }
+    else {
+      return <Navigation />
+
+    }
+  }
+
   return (
     <div className="App">
-      <Navigation />
+      <Navbar />
       <Container>
         <Error404 />
         <Routes>
@@ -22,6 +38,8 @@ function App() {
           <Route path="/Supervisor" element={<SupervisorQueue />} />
           <Route path="/Hr" element={<HrQueue />} />
           <Route path="/Assessment" element={<RateeAssessment />} />
+          <Route path="/SupervisorReview" element={<SupervisorReview />} />
+
         </Routes>
       </Container>
     </div>
