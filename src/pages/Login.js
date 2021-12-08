@@ -1,8 +1,10 @@
 import React from 'react'
+
 import { Container, Col, Row, Form, Button, Card } from 'react-bootstrap';
 //import Title from '../components/Title';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFrown, faEnvelope, faLock } from '@fortawesome/fontawesome-free-solid'
+
 
 export default function Loginform() {
     let show = false;
@@ -10,10 +12,8 @@ export default function Loginform() {
 
     return (
         <div Align="center" class="BackGround">
-
             <FontAwesomeIcon style={{ marginTop: '10vh' }} icon={faFrown} size="5x" />
             <Card className="pb-5" style={{ width: '480px', marginTop: '3vh' }}>
-
                 <Container>
                     <Card.Body>
                         <Form className="mt-2">
