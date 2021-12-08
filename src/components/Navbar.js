@@ -8,6 +8,7 @@ const Navigation = () => {
         { title: "Supervisor Queue", route: "/Supervisor" },
         { title: "HR Queue", route: "/Hr" },
         { title: "Self Assessment", route: "/Assessment" },
+        { title: "Supervisor Review", route: "/SupervisorReview"}
     ];
 
     return (

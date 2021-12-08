@@ -1,16 +1,16 @@
 import React from 'react'
 import { Row, Col, ListGroup, Stack, Pagination } from 'react-bootstrap'
+import Title from '../components/Title'
 
 export default function HrQueue() {
 
     const test = [1, 2, 3, 4]
-    
+
     return (
         <>
             <Row className="mt-5">
                 <Col>
-                    <h2>Performance Appraisal</h2>
-                    <p className="text-muted">Lorem Ipsum dolor</p>
+                    <Title title="Yearly Performance Appraisal" subtitle="Submissions" />
                 </Col>
             </Row>
             <Row className="mt-5">
@@ -26,7 +26,7 @@ export default function HrQueue() {
                                 <ListGroup.Item className="py-3 px-4" action>
                                     <Stack gap={0} >
                                         <h5>Juan dela Cruz</h5>
-                                            <span className="text-muted" style={{ marginTop: '-8px'}}>Employee</span>
+                                        <span className="text-muted" style={{ marginTop: '-8px' }}>Employee</span>
                                     </Stack>
                                 </ListGroup.Item>
                             ))
@@ -48,7 +48,7 @@ export default function HrQueue() {
                                 <ListGroup.Item className="py-3 px-4" action>
                                     <Stack gap={0}>
                                         <h5>Juan dela Cruz</h5>
-                                        <span className="text-muted" style={{ marginTop: '-8px'}}>Employee</span>
+                                        <span className="text-muted" style={{ marginTop: '-8px' }}>Employee</span>
                                     </Stack>
                                 </ListGroup.Item>
                             ))
@@ -58,7 +58,7 @@ export default function HrQueue() {
             </Row>
             <Row className="mt-5 px-5">
                 <Col className="d-flex justify-content-center">
-                    <Pagination style={{fontSize: '22px'}}>
+                    <Pagination style={{ fontSize: '22px' }}>
                         <Pagination.First>First</Pagination.First>
                         <Pagination.Prev>Prev</Pagination.Prev>
                         <Pagination.Item>{1}</Pagination.Item>
