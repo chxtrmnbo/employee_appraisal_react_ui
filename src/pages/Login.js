@@ -45,7 +45,6 @@ export default function Loginform() {
             </Card>
 
             <h5 style={{ marginTop: '2vh' }}> Forgot your Password? <span className="text-primary">Reset Password</span></h5>
-
         </div >
 
     )
