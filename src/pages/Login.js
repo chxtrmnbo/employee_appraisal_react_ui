@@ -6,7 +6,7 @@ export default function Loginform() {
     return (
         <div Align="center" class="BackGround">
             <Card className="pb-5" style={{ width: '480px', marginTop: '15vh' }}>
-              <Title/>
+              
                 <Container>
                     <Card.Body>
                         <Form className="mt-2">
