@@ -1,12 +1,11 @@
 import React from 'react'
-import { Container, Col, Row, Form, Button, Card } from 'react-bootstrap';
+import { Container, Col, Row, Form,Button, Card } from 'react-bootstrap';
 //import Title from '../git/employee_appraisal_react/src/components/Title';
 
 export default function Loginform() {
     return (
         <div Align="center" class="BackGround">
             <Card className="pb-5" style={{ width: '480px', marginTop: '15vh' }}>
-              
                 <Container>
                     <Card.Body>
                         <Form className="mt-2">
