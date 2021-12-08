@@ -5,8 +5,6 @@ export default function RateeAssessment(props) {
     return (
         <>
             <FormTable />
-
-            <CommentBox title="Ratee's Comment" />
         </>
     )
 }
