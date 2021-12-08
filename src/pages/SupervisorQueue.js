@@ -1,5 +1,6 @@
 import React from 'react'
 import { Row, Col, ListGroup, Stack, Pagination } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 import Title from '../components/Title'
 
@@ -23,12 +24,14 @@ export default function SupervisorQueue() {
                     <ListGroup>
                         {
                             test.map(el => (
-                                <ListGroup.Item className="py-3 px-4" action>
-                                    <Stack gap={0} >
-                                        <h5>Juan dela Cruz</h5>
-                                        <span className="text-muted" style={{ marginTop: '-8px' }}>Employee</span>
-                                    </Stack>
-                                </ListGroup.Item>
+                                <Link to="/SupervisorReview" style={{ textDecoration: "none" }}>
+                                    <ListGroup.Item className="py-3 px-4" action>
+                                        <Stack gap={0} >
+                                            <h5>Juan dela Cruz</h5>
+                                            <span className="text-muted" style={{ marginTop: '-8px' }}>Employee</span>
+                                        </Stack>
+                                    </ListGroup.Item>
+                                </Link>
                             ))
                         }
                     </ListGroup>
