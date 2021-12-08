@@ -1,9 +1,12 @@
 import React from 'react'
+import CommentBox from '../components/CommentBox'
 import FormTable from '../components/FormTable'
-export default function RateeAssessment() {
+export default function RateeAssessment(props) {
     return (
-        <div>
+        <>
             <FormTable />
-        </div>
+
+            <CommentBox title="Ratee's Comment" />
+        </>
     )
 }

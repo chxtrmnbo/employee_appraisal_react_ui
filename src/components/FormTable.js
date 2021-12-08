@@ -15,7 +15,7 @@ export default function FormTable(props) {
                     <h1>UserInfo here</h1>
                 </Col>
             </Row>
-
+            
             <Row className="text-white fw-bold p-2 g-0 header-background">
                 <Col>
                     <h4>Employee Details:</h4>
@@ -70,12 +70,12 @@ export default function FormTable(props) {
             <Row >
                 <Col style={{ width: '100' }}>
                     <Card className="border-0">
-                                                
+                        {/*                         
                         <Row className="g-0 p-2" style={{ backgroundColor: '#DDEDF5', color: 'gray' }}>
                             <Col>
                                 <h4>II. Employee Assessment Form</h4>
                             </Col>
-                        </Row> 
+                        </Row>  */}
                         <Row
                             style={{
                                 borderTop: "1px solid black",
