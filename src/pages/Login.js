@@ -4,8 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFrown, faEnvelope, faLock, faEye, faEyeSlash } from '@fortawesome/fontawesome-free-solid'
 import { useNavigate } from "react-router-dom"
 
+import Notification from '../components/Notification'
+
 export default function Loginform() {
     const [show, setShow] = useState(false)
+    const [validate, setValidate] = useState([])
+    const [error, setError] = useState(false)
     let navigate = useNavigate()
 
 
@@ -32,7 +36,6 @@ export default function Loginform() {
             }
         ]
         const index = dummy.map(el => el.email).indexOf(evt.target.email.value)
-
         if (dummy[index].email == evt.target.email.value && dummy[index].password == evt.target.password.value) {
             console.log('Passed')
             localStorage.setItem('user', dummy[index]);
@@ -47,8 +50,19 @@ export default function Loginform() {
                 navigate("/Hr")
             }
         } else {
+            setError(true)
             console.log(dummy[index])
             console.log('wew')
+        }
+    }
+
+    const Validation = () => {
+        if (validate.length != 0) {
+            return <p className="text-center text-muted" style={{ fontSize: ".8em" }}>
+                {validate}
+            </p>
+        } else {
+            return null
         }
     }
 
@@ -66,7 +80,8 @@ export default function Loginform() {
                     <Row className="pb-4">
                         <Col xl={12} className="d-flex align-items-center">
                             <FontAwesomeIcon icon={faEnvelope} className="me-3 text-primary" />
-                            <Form.Control type="text" name="email" placeholder="Email" required />
+                            <Form.Control type="email" name="email" placeholder="Email" required />
+
                         </Col>
                     </Row>
                     <Row className="pb-2">
@@ -74,10 +89,13 @@ export default function Loginform() {
                             <FontAwesomeIcon icon={faLock} className="me-3  text-primary" />
                             <Form.Control name="password" type={show ? "text" : "password"} placeholder="Password" required />
                             <FontAwesomeIcon size="lg" className="text-muted"
-
                                 icon={!show ? faEye : faEyeSlash} onClick={() => setShow(!show)} style={{ position: "absolute", right: 55 }} />
                         </Col>
                     </Row>
+
+                    <Validation />
+
+
                     <Row className="py-4">
                         <Col xl={12} >
                             <Button type="submit" size="md" className="bg-primary w-100 text-white" >Log In</Button>
@@ -86,7 +104,14 @@ export default function Loginform() {
                 </Form>
             </Card>
             <span className="text-muted"> Copyright ©2021 </span>
-
+            <Notification
+                show={error}
+                status="error"
+                message="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                //change message if  error = "There is something wrong with the inputs. Please Check the fields"
+                position="bottom-center"
+                width="400px"
+            />
         </div >
 
     )
