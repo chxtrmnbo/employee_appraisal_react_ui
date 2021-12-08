@@ -6,6 +6,7 @@ import Login from './pages/Login'
 import SupervisorQueue from './pages/SupervisorQueue'
 import HrQueue from './pages/HrQueue'
 import RateeAssessment from './pages/RateeAssessment'
+
 import SupervisorReview from './pages/SupervisorReview'
 import { useLocation } from 'react-router-dom'
 
@@ -31,6 +32,7 @@ function App() {
     <div className="App">
       <Navbar />
       <Container>
+        <Error404 />
         <Routes>
           <Route path="/Login" element={<Login />} />
           <Route path="/Supervisor" element={<SupervisorQueue />} />
