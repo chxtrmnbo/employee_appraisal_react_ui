@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Row, Col, Card, Form } from 'react-bootstrap'
 
 
-export default function UserInfo() {
 
 export default function UserInfo(props) {
     const handleChange = (evt) => {
@@ -61,7 +60,7 @@ export default function UserInfo(props) {
 
                     <Col xl="6" xs="12" className="p-3  border border-1">
                         <Row>
-                       
+
                             <Col>
                                 <span> Employee Name:</span>
 
