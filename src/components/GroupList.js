@@ -9,8 +9,9 @@ export default function GroupList(props) {
     let departments = props.appraisals.map(el => el.departmentId)
 
     console.log("years", years)
+    var unique = years.filter((v, i, a) => a.indexOf(v) === i);
 
-    years.forEach(year => {
+    unique.forEach(year => {
         let users = props.appraisals.filter(el => el.appraisalYear == year)
         let yearIndex = groupAppraisal.map(el => el.appraisalYear).indexOf(year)
         if (yearIndex == -1) {
