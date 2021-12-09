@@ -1,5 +1,5 @@
 let user = JSON.parse(localStorage.getItem('user'))
-const Auth = user;
+let Auth = user;
 
 if (!Auth) {
     Auth = {
