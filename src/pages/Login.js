@@ -38,7 +38,9 @@ export default function Loginform() {
         const index = dummy.map(el => el.email).indexOf(evt.target.email.value)
         if (dummy[index].email == evt.target.email.value && dummy[index].password == evt.target.password.value) {
             console.log('Passed')
-            localStorage.setItem('user', dummy[index]);
+            let wew = JSON.stringify(dummy[index])
+            console.log(wew)
+            localStorage.setItem('user', wew);
 
             if (dummy[index].role === 1) {
                 navigate("/Assessment")
@@ -79,17 +81,18 @@ export default function Loginform() {
                     </Row>
                     <Row className="pb-4">
                         <Col xl={12} className="d-flex align-items-center">
-                            <FontAwesomeIcon icon={faEnvelope} className="me-3 text-primary" />
+                            <FontAwesomeIcon style={{ color: "#0052A0" }} icon={faEnvelope} className="me-3 " />
                             <Form.Control type="email" name="email" placeholder="Email" required />
 
                         </Col>
                     </Row>
                     <Row className="pb-2">
                         <Col xl={12} className="d-flex align-items-center">
-                            <FontAwesomeIcon icon={faLock} className="me-3  text-primary" />
+                            <FontAwesomeIcon icon={faLock} className="me-3 " style={{ color: "#0052A0" }} />
                             <Form.Control name="password" type={show ? "text" : "password"} placeholder="Password" required />
-                            <FontAwesomeIcon size="lg" className="text-muted"
-                                icon={!show ? faEye : faEyeSlash} onClick={() => setShow(!show)} style={{ position: "absolute", right: 55 }} />
+                            <FontAwesomeIcon size="lg"
+
+                                icon={!show ? faEye : faEyeSlash} onClick={() => setShow(!show)} style={{ position: "absolute", right: 55, color: "#b1b1b1" }} />
                         </Col>
                     </Row>
 
@@ -98,7 +101,7 @@ export default function Loginform() {
 
                     <Row className="py-4">
                         <Col xl={12} >
-                            <Button type="submit" size="md" className="bg-primary w-100 text-white" >Log In</Button>
+                            <Button type="submit" size="md" className=" w-100 text-white" style={{ background: "#0052A0" }}>Log In</Button>
                         </Col>
                     </Row>
                 </Form>

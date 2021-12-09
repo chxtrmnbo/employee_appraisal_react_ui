@@ -22,12 +22,26 @@ input.form-control {
 }
 
 textarea.form-control {
-  border: none;
-  color: red;
+  border: none !important;
   border-radius: 0;
+  resize: none !important
 }
 
+
+
 .btn-primary {
+  background: #0052A0
+}
+
+.bg-primary {
+  background: #0052A0
+}
+
+.card .card-header {
+  background: #0052A0
+}
+
+.btn.btn-primary {
   background: #0052A0
 }
 

@@ -1,6 +1,10 @@
 import React from "react";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import { Link } from 'react-router-dom'
+import Auth from '../services/storage'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSignOutAlt } from '@fortawesome/fontawesome-free-solid'
+
 
 const Navigation = () => {
     const navigations = [
@@ -8,12 +12,12 @@ const Navigation = () => {
         { title: "Supervisor Queue", route: "/Supervisor" },
         { title: "HR Queue", route: "/Hr" },
         { title: "Self Assessment", route: "/Assessment" },
-        { title: "Supervisor Review", route: "/SupervisorReview"}
+        { title: "Supervisor Review", route: "/SupervisorReview" }
     ];
 
     return (
         <>
-            <Navbar style={{ backgroundColor: "#4852b0" }} variant="dark" expand="lg">
+            <Navbar style={{ backgroundColor: "#4852B0" }} variant="dark" expand="lg">
                 <Container>
                     <Navbar.Brand href="#home">
                         <img
@@ -25,9 +29,8 @@ const Navigation = () => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav" className="text-white">
                         <Nav className="ms-auto" style={{ color: "white" }}>
-                            <NavDropdown title="Alden Recharge" id="basic-nav-dropdown">
+                            <NavDropdown title={Auth.email} id="basic-nav-dropdown">
                                 {navigations.map((nav, index) => (
-
                                     <NavDropdown.Item
                                         className=""
                                     >
@@ -41,8 +44,8 @@ const Navigation = () => {
                                 ))}
                             </NavDropdown>
 
-                            <Link className="text-decoration-none text-muted " to="/Login">
-                                LOGOUT
+                            <Link className="d-flex  align-items-center text-decoration-none  " to="/Login" style={{ color: "#e1e1e1" }}>
+                                <FontAwesomeIcon icon={faSignOutAlt} />
                             </Link>
                         </Nav>
                     </Navbar.Collapse>

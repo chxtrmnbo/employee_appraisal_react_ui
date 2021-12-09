@@ -32,14 +32,12 @@ function App() {
     <div className="App">
       <Navbar />
       <Container>
-        <Error404 />
         <Routes>
           <Route path="/Login" element={<Login />} />
           <Route path="/Supervisor" element={<SupervisorQueue />} />
           <Route path="/Hr" element={<HrQueue />} />
           <Route path="/Assessment" element={<RateeAssessment />} />
-          <Route path="/SupervisorReview" element={<SupervisorReview />} />
-
+          <Route path="/SupervisorReview/:id" element={<SupervisorReview />} />
         </Routes>
       </Container>
     </div>
