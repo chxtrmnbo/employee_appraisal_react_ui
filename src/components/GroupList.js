@@ -43,7 +43,7 @@ export default function GroupList(props) {
                         </Row>
                         <Row className="mt-2">
                             <Col>
-                                <ListGroup>
+                                <ListGroup style={{borderLeft: '10px solid #0052A0'}}>
                                     {
                                         appraisal.users.map((user, index) =>
                                             <Link to={`/SupervisorReview/${user._id}`} style={{ textDecoration: "none" }}>
