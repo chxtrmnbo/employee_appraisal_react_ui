@@ -323,7 +323,6 @@ export default function RateeAssessment() {
         //   //   });
         // }
 
-
         // setTimeout(() => {
         //   setLoading(false);
         // }, 2000);

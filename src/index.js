@@ -2,6 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
+// Redux
+import { configureStore } from "@reduxjs/toolkit";
+import { Provider } from "react-redux";
+
+// Reducers
+import userReducer from "./features/user";
+
+
+
 import './scss/custom.scss';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,9 +18,17 @@ import 'bootstrap/dist/js/bootstrap.js';
 
 import App from './App';
 
+const store = configureStore({
+  reducer: {
+    user: userReducer,
+  },
+});
+
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </BrowserRouter>,
   document.getElementById('root')
 );
