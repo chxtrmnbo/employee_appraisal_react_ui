@@ -21,6 +21,11 @@ body {
   box-shadow: rgba(0, 0, 0, 0.01) 0px 4px 12px;
 }
 
+.list-group-item {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
 input.form-control {
   border: 1px solid #e3e3e3;
 }

@@ -47,7 +47,9 @@ export default function GroupList(props) {
                                     {
                                         appraisal.users.map((user, index) =>
                                             <Link to={`/SupervisorReview/${user._id}`} style={{ textDecoration: "none" }}>
-                                                <ListGroup.Item className="py-3 px-4" action >
+                                                <ListGroup.Item className="py-3 px-4 mt-2"  
+                                                style={{borderLeft:'10px solid #0052A0', borderRadius: '8px'}}
+                                                 action >
                                                     <Stack gap={0} >
                                                         <h5>{user.employeeId}</h5>
                                                         <span className="text-muted" style={{ marginTop: '-8px' }}>Employee</span>
