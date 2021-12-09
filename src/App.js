@@ -14,7 +14,6 @@ import { useLocation } from 'react-router-dom'
 import Navigation from './components/Navbar';
 import { useNavigate } from "react-router-dom"
 import Auth from './services/storage'
-
 function App() {
   const navigate = useNavigate()
   let id = useLocation().pathname
