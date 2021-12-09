@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Card, Button, Form } from 'react-bootstrap'
 import Title from '../components/Title'
+
 import CommentBox from '../components/CommentBox'
 import UserInfo from "../components/UserInfo";
 import FormTable from "../components/FormTable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import Validation from "../components/Validation";
+import Success from '../components/Success'
 
 import Instance from "../services/axios";
 import Auth from "../services/storage";
 
+
 export default function RateeAssessment() {
+    const [success, setSuccess] = useState(false);
 
     const [userInfo, setUserInfo] = useState("");
     const [comment, setComment] = useState("");
@@ -319,21 +323,20 @@ export default function RateeAssessment() {
         //   //   });
         // }
 
-
         // setTimeout(() => {
         //   setLoading(false);
         // }, 2000);
 
     };
-
     return (
         <>
-            <Row className="mt-5 text-center">
+            <Row Row className="mt-5 text-center" >
                 <Col>
                     <Title title="Yearly Performance Appraisal" subtitle="Self Assessment" />
                 </Col>
             </Row>
-            <Form onSubmit={formSubmit}>
+
+            <Form onSubmit={formSubmit} >
                 <Row className="my-5">
                     <Col>
                         <UserInfo name={Auth.name} department={Auth.role} userCallback={handleUserChanges} />
@@ -370,7 +373,6 @@ export default function RateeAssessment() {
                     </Col>
                 </Row>
             </Form>
-            <p>{JSON.stringify(metrics)}</p>
         </>
     );
 }

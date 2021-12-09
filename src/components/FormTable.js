@@ -56,7 +56,7 @@ export default function FormTable(props) {
                     </div>
                 </Col>
                 <Col lg={2} className="d-flex justify-content-center border border-1">
-                    Rating <br /> (0 up tp 5)
+                    Rating <br /> (0 up to 5)
                 </Col>
                 <Col lg={2} className="d-flex justify-content-center">
                     Weighted <br /> Rating

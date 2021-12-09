@@ -1,12 +1,23 @@
 import React, { useState } from 'react'
-import { Container, Col, Row, Form, Button, Card } from 'react-bootstrap';
+import { Col, Row, Form, Button, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFrown, faEnvelope, faLock, faEye, faEyeSlash } from '@fortawesome/fontawesome-free-solid'
-import { useNavigate } from "react-router-dom"
+import { faEnvelope, faLock, faEye, faEyeSlash } from '@fortawesome/fontawesome-free-solid'
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+
+import { userLogin } from "../features/user";
 
 import Notification from '../components/Notification'
 
 export default function Loginform() {
+    const dispatch = useDispatch();
+
+
+    const dummy = useSelector((state) => state.user.dummy);
+    const userState = useSelector((state) => state.user.value);
+    console.log(userState)
+
     const [show, setShow] = useState(false)
     const [validate, setValidate] = useState([])
     const [error, setError] = useState(false)
@@ -15,47 +26,12 @@ export default function Loginform() {
 
     const onLogin = (evt) => {
         evt.preventDefault()
-        let dummy = [
-            {
-                name: 'Juan Ted',
-                email: 'juan@gmail.com',
-                password: '1234',
-                role: 1
-            },
-            {
-                name: 'Alden Richards',
-                email: 'alden@gmail.com',
-                password: '1234',
-                role: 2
-            },
-            {
-                name: 'Maine Mendoza',
-                email: 'maine@gmail.com',
-                password: '1234',
-                role: 3
-            }
-        ]
-        const index = dummy.map(el => el.email).indexOf(evt.target.email.value)
-        if (dummy[index].email == evt.target.email.value && dummy[index].password == evt.target.password.value) {
-            console.log('Passed')
-            let wew = JSON.stringify(dummy[index])
-            console.log(wew)
-            localStorage.setItem('user', wew);
-
-            if (dummy[index].role === 1) {
-                navigate("/Assessment")
-            }
-            else if (dummy[index].role === 2) {
-                navigate("/Supervisor")
-            }
-            else {
-                navigate("/Hr")
-            }
-        } else {
-            setError(true)
-            console.log(dummy[index])
-            console.log('wew')
+        let formData = {
+            email: evt.target.email.value,
+            password: evt.target.password.value,
         }
+        dispatch(userLogin(formData));
+        console.log('wew', dispatch(userLogin(formData)));
     }
 
     const Validation = () => {
@@ -90,14 +66,14 @@ export default function Loginform() {
                         <Col xl={12} className="d-flex align-items-center">
                             <FontAwesomeIcon icon={faLock} className="me-3 " style={{ color: "#0052A0" }} />
                             <Form.Control name="password" type={show ? "text" : "password"} placeholder="Password" required />
-                            <FontAwesomeIcon size="lg"
 
+                            <FontAwesomeIcon size="lg"
                                 icon={!show ? faEye : faEyeSlash} onClick={() => setShow(!show)} style={{ position: "absolute", right: 55, color: "#b1b1b1" }} />
+
                         </Col>
                     </Row>
 
                     <Validation />
-
 
                     <Row className="py-4">
                         <Col xl={12} >
@@ -108,7 +84,7 @@ export default function Loginform() {
             </Card>
             <span className="text-muted"> Copyright ©2021 </span>
             <Notification
-                show={error}
+                show={userState.isValid ? false : true}
                 status="error"
                 message="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
                 //change message if  error = "There is something wrong with the inputs. Please Check the fields"

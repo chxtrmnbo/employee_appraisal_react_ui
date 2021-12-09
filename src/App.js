@@ -12,9 +12,11 @@ import { useLocation } from 'react-router-dom'
 
 // Components
 import Navigation from './components/Navbar';
+import { useNavigate } from "react-router-dom"
+import Auth from './services/storage'
 
 function App() {
-
+  const navigate = useNavigate()
   let id = useLocation().pathname
   console.log(id)
 
@@ -27,6 +29,8 @@ function App() {
 
     }
   }
+  console.log(Auth.email)
+
 
   return (
     <div className="App">
