@@ -1,36 +1,33 @@
-import { Routes, Route } from 'react-router-dom'
-import { Container } from 'react-bootstrap'
+import { Routes, Route } from "react-router-dom";
+import { Container } from "react-bootstrap";
 
 //Pages
-import Login from './pages/Login'
-import SupervisorQueue from './pages/SupervisorQueue'
-import HrQueue from './pages/HrQueue'
-import RateeAssessment from './pages/RateeAssessment'
+import Login from "./pages/Login";
+import SupervisorQueue from "./pages/SupervisorQueue";
+import HrQueue from "./pages/HrQueue";
+import RateeAssessment from "./pages/RateeAssessment";
 
-import SupervisorReview from './pages/SupervisorReview'
-import { useLocation } from 'react-router-dom'
+import SupervisorReview from "./pages/SupervisorReview";
+import { useLocation } from "react-router-dom";
 
 // Components
-import Navigation from './components/Navbar';
-import { useNavigate } from "react-router-dom"
-import Auth from './services/storage'
+import Navigation from "./components/Navbar";
+import { useNavigate } from "react-router-dom";
+import Auth from "./services/storage";
 
 function App() {
-  const navigate = useNavigate()
-  let id = useLocation().pathname
-  console.log(id)
+  const navigate = useNavigate();
+  let id = useLocation().pathname;
+  console.log(id);
 
   const Navbar = () => {
-    if (id === '/Login') {
-      return null
+    if (id === "/Login") {
+      return null;
+    } else {
+      return <Navigation />;
     }
-    else {
-      return <Navigation />
-
-    }
-  }
-  console.log(Auth.email)
-
+  };
+  console.log(Auth.email);
 
   return (
     <div className="App">

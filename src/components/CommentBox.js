@@ -10,15 +10,13 @@ export default function CommentBox(props) {
   //   };
   return (
     <Card>
-      <Card.Header className="text-white">
-        {props.title}
-      </Card.Header>
+      <Card.Header className="text-white">{props.title}</Card.Header>
       <Form.Control
         as="textarea"
         rows={4}
         maxLength={255}
-      // value={props.comment.comments}
-      // onChange={(e) => handleChange(e)}
+        // value={props.comment.comments}
+        // onChange={(e) => handleChange(e)}
       />
     </Card>
   );
