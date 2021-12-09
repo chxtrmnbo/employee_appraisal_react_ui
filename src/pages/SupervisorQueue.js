@@ -1,6 +1,11 @@
+
 import React, { useEffect, useState } from 'react'
 
-import { Row, Col, ListGroup, Stack, Pagination } from 'react-bootstrap'
+import { Row, Col, ListGroup, Stack, Pagination, Card } from 'react-bootstrap'
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
+
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Card, Button, Form } from 'react-bootstrap'
 import Title from '../components/Title'
+
 import CommentBox from '../components/CommentBox'
 import UserInfo from "../components/UserInfo";
 import FormTable from "../components/FormTable";
@@ -11,7 +12,9 @@ import Validation from "../components/Validation";
 import Instance from "../services/axios";
 import Auth from "../services/storage";
 
+
 export default function RateeAssessment() {
+    const [success, setSuccess] = useState(false);
 
     const [userInfo, setUserInfo] = useState("");
     const [comment, setComment] = useState("");
@@ -326,14 +329,13 @@ export default function RateeAssessment() {
 
     };
 
-    return (
-        <>
-            <Row className="mt-5 text-center">
-                <Col>
-                    <Title title="Yearly Performance Appraisal" subtitle="For Review" />
-                </Col>
-            </Row>
-            <Form onSubmit={formSubmit}>
+    const MyForm = () => {
+        if (success) {
+            return <Success />
+        }
+        else {
+            return <Form onSubmit={formSubmit} >
+
                 <Row className="my-5">
                     <Col>
                         <UserInfo name={Auth.name} department={Auth.role} userCallback={handleUserChanges} />
@@ -370,7 +372,18 @@ export default function RateeAssessment() {
                     </Col>
                 </Row>
             </Form>
-            <p>{JSON.stringify(metrics)}</p>
+
+        }
+    }
+    return (
+        <>
+            <Row Row className="mt-5 text-center" >
+                <Col>
+                    <Title title="Yearly Performance Appraisal" subtitle="For Review" />
+                </Col>
+            </Row>
+
+            <MyForm />
         </>
     );
 }

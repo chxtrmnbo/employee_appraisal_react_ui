@@ -36,26 +36,42 @@ export default function Loginform() {
             }
         ]
         const index = dummy.map(el => el.email).indexOf(evt.target.email.value)
-        if (dummy[index].email == evt.target.email.value && dummy[index].password == evt.target.password.value) {
-            console.log('Passed')
-            let wew = JSON.stringify(dummy[index])
-            console.log(wew)
-            localStorage.setItem('user', wew);
-
-            if (dummy[index].role === 1) {
-                navigate("/Assessment")
-            }
-            else if (dummy[index].role === 2) {
-                navigate("/Supervisor")
-            }
-            else {
-                navigate("/Hr")
-            }
-        } else {
+    
+        if (index == -1) {
             setError(true)
-            console.log(dummy[index])
-            console.log('wew')
+        } else {
+            if (dummy[index].email == evt.target.email.value && dummy[index].password == evt.target.password.value) {
+                let wew = JSON.stringify(dummy[index])
+                localStorage.setItem('user', wew);
+                if (dummy[index].role === 1) {
+                    navigate("/Assessment")
+                }
+                else if (dummy[index].role === 2) {
+                    navigate("/Supervisor")
+                }
+                else {
+                    navigate("/Hr")
+                }
+            }
         }
+
+        // if (dummy[index].email == evt.target.email.value && dummy[index].password == evt.target.password.value) {
+        //     let wew = JSON.stringify(dummy[index])
+        //     localStorage.setItem('user', wew);
+        //     if (dummy[index].role === 1) {
+        //         navigate("/Assessment")
+        //     }
+        //     else if (dummy[index].role === 2) {
+        //         navigate("/Supervisor")
+        //     }
+        //     else {
+        //         navigate("/Hr")
+        //     }
+        // } else {
+        //     setError(true)
+        //     console.log(dummy[index])
+        //     console.log('wew')
+        // }
     }
 
     const Validation = () => {
@@ -90,9 +106,11 @@ export default function Loginform() {
                         <Col xl={12} className="d-flex align-items-center">
                             <FontAwesomeIcon icon={faLock} className="me-3 " style={{ color: "#0052A0" }} />
                             <Form.Control name="password" type={show ? "text" : "password"} placeholder="Password" required />
-                            <FontAwesomeIcon size="lg"
 
+
+                            <FontAwesomeIcon size="lg"
                                 icon={!show ? faEye : faEyeSlash} onClick={() => setShow(!show)} style={{ position: "absolute", right: 55, color: "#b1b1b1" }} />
+
                         </Col>
                     </Row>
 
