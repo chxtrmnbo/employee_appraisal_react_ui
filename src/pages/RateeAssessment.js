@@ -1,46 +1,17 @@
-import React from 'react'
-import { Row, Col, Card, Form } from 'react-bootstrap'
+import React, { useState, useEffect } from "react";
+import { Row, Col, Card, Button, Form } from 'react-bootstrap'
 import Title from '../components/Title'
-<<<<<<< Updated upstream
-import FormTable from '../components/FormTable'
-import UserInfo from '../components/UserInfo'
-export default function RateeAssessment() {
-    return (
-        <>
-            <Row className="py-2 mb-3 mt-5">
-                <Col className="text-center">
-                    <Title title="Yearly Performance Appraisal" subtitle="Self-Assessment" />
-                </Col>
-            </Row>
-            <Row className="g-0 p-2 " >
-                <Col>
-                    <UserInfo />
-                </Col>
-            </Row>
 
-            <Row className="g-0 p-2 " >
-                <Col>
-                    <Card>
-                        <Card.Header className="bg-primary text-white">
-                            <span>II.Employee Assessment Form</span>
-                        </Card.Header>
-                        <FormTable />
-
-                    </Card>
-                </Col>
-            </Row>
-
-=======
 import CommentBox from '../components/CommentBox'
 import UserInfo from "../components/UserInfo";
 import FormTable from "../components/FormTable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import Validation from "../components/Validation";
-import Success from "../components/Success";
 
 import Instance from "../services/axios";
 import Auth from "../services/storage";
+
 
 export default function RateeAssessment() {
     const [success, setSuccess] = useState(false);
@@ -363,7 +334,8 @@ export default function RateeAssessment() {
             return <Success />
         }
         else {
-            return <Form Form onSubmit={formSubmit} >
+            return <Form onSubmit={formSubmit} >
+
                 <Row className="my-5">
                     <Col>
                         <UserInfo name={Auth.name} department={Auth.role} userCallback={handleUserChanges} />
@@ -400,6 +372,7 @@ export default function RateeAssessment() {
                     </Col>
                 </Row>
             </Form>
+
         }
     }
     return (
@@ -410,9 +383,7 @@ export default function RateeAssessment() {
                 </Col>
             </Row>
 
-
             <MyForm />
->>>>>>> Stashed changes
         </>
-    )
+    );
 }

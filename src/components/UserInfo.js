@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Row, Col, Card, Form } from 'react-bootstrap'
 
-<<<<<<< Updated upstream
+
 export default function UserInfo() {
-=======
+
 export default function UserInfo(props) {
     const handleChange = (evt) => {
         props.userCallback(evt.target.value);
     };
+
 
     const Input = () => {
         if (!props.year) {
@@ -22,60 +23,52 @@ export default function UserInfo(props) {
         }
     }
 
->>>>>>> Stashed changes
+
     return (
         <>
             <Card >
-                <Card.Header className="bg-primary text-white">
-                    Employee Details:
+                <Card.Header className="text-white py-3">
+                    Employee Details
                 </Card.Header>
                 <Row className="g-0">
-                    <Col className="p-3 border border-1">
+                    <Col xl="6" xs="12" className="p-3 border border-1">
                         <Row>
                             <Col>
-                                <span> Employee Name:</span>
-                            </Col>
-                            <Col>
-                                <span> Employee Name:</span>
+                                <span className="fw-bold"> Employee name </span>
+                                <p style={{ padding: 0, margin: 0 }}>{props.name}</p>
                             </Col>
                         </Row>
                     </Col>
 
-                    <Col className="p-3 border border-1">
+                    <Col xl="6" xs="12" className="p-3 border border-1">
                         <Row>
                             <Col>
-                                <span> Employee Name:</span>
-                            </Col>
-                            <Col>
-                                <span> Employee Name:</span>
+                                <span className="fw-bold"> Department </span>
+                                <p style={{ padding: 0, margin: 0 }}>{props.department}</p>
                             </Col>
                         </Row>
                     </Col>
                 </Row>
                 <Row className="g-0">
-                    <Col className="p-3 border border-1">
+                    <Col xl="6" xs="12" className="p-3 border border-1">
                         <Row>
                             <Col className="">
-                                <span> Employee Name:</span>
-                            </Col>
-                            <Col>
-                                <span> Employee Name:</span>
+                                <span className="fw-bold"> Supervisor/Reviewer </span>
+                                <p style={{ padding: 0, margin: 0 }}>{props.supervisor}Someone</p>
                             </Col>
                         </Row>
                     </Col>
 
-                    <Col className="p-3  border border-1">
+                    <Col xl="6" xs="12" className="p-3  border border-1">
                         <Row>
-                            <Col>
-<<<<<<< Updated upstream
-                                <span> Employee Name:</span>
-                            </Col>
+                       
                             <Col>
                                 <span> Employee Name:</span>
-=======
+
                                 <span className="fw-bold"> Appraisal year </span>
                                 <Input />
->>>>>>> Stashed changes
+
+
                             </Col>
                         </Row>
                     </Col>

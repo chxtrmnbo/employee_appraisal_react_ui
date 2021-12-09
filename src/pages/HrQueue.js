@@ -1,64 +1,54 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+
 import { Row, Col, ListGroup, Stack, Pagination } from 'react-bootstrap'
 
-export default function HrQueue() {
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
-    const test = [1, 2, 3, 4]
-    
+import Title from '../components/Title'
+import GroupList from '../components/GroupList'
+
+import Instance from '../services/axios'
+
+export default function HrQueue() {
+    const [show, setShow] = useState(true)
+    const [appraisals, setAppraisals] = useState([])
+
+    useEffect(() => {
+        Instance.get('/appraisals')
+            .then(res => {
+                console.log(res.data)
+                setAppraisals(res.data)
+            })
+            .catch(err => {
+                console.error(err);
+                setShow(false)
+            })
+    }, []);
+
+    const Loader = () => {
+        if (appraisals.length == 0) {
+            return (
+                <FontAwesomeIcon className="my-5" icon={faCircleNotch} spin size="8x" />
+            )
+        }
+        else {
+            return null
+        }
+    }
+
+
     return (
         <>
             <Row className="mt-5">
                 <Col>
-                    <h2>Performance Appraisal</h2>
-                    <p className="text-muted">Lorem Ipsum dolor</p>
+                    <Title title="Yearly Performance Appraisal" subtitle="Submissions" />
                 </Col>
             </Row>
-            <Row className="mt-5">
-                <Col>
-                    <h4>2020 <span className="text-muted" style={{ fontSize: '20px' }}>(2)</span> </h4>
-                </Col>
-            </Row>
-            <Row className="mt-2">
-                <Col>
-                    <ListGroup>
-                        {
-                            test.map(el => (
-                                <ListGroup.Item className="py-3 px-4" action>
-                                    <Stack gap={0} >
-                                        <h5>Juan dela Cruz</h5>
-                                            <span className="text-muted" style={{ marginTop: '-8px'}}>Employee</span>
-                                    </Stack>
-                                </ListGroup.Item>
-                            ))
-                        }
-                    </ListGroup>
-                </Col>
-            </Row>
-
-            <Row className="mt-5">
-                <Col>
-                    <h4>2020 <span className="text-muted" style={{ fontSize: '20px' }}>(2)</span> </h4>
-                </Col>
-            </Row>
-            <Row className="mt-2">
-                <Col>
-                    <ListGroup>
-                        {
-                            test.map(el => (
-                                <ListGroup.Item className="py-3 px-4" action>
-                                    <Stack gap={0}>
-                                        <h5>Juan dela Cruz</h5>
-                                        <span className="text-muted" style={{ marginTop: '-8px'}}>Employee</span>
-                                    </Stack>
-                                </ListGroup.Item>
-                            ))
-                        }
-                    </ListGroup>
-                </Col>
-            </Row>
+            <GroupList appraisals={appraisals} />
             <Row className="mt-5 px-5">
                 <Col className="d-flex justify-content-center">
-                    <Pagination style={{fontSize: '22px'}}>
+                    <Pagination style={{ fontSize: '22px' }}>
                         <Pagination.First>First</Pagination.First>
                         <Pagination.Prev>Prev</Pagination.Prev>
                         <Pagination.Item>{1}</Pagination.Item>

@@ -1,5 +1,4 @@
-<<<<<<< Updated upstream
-=======
+
 import React, { useState, useEffect } from "react";
 import { Row, Col, Card, Button, Form } from 'react-bootstrap'
 import Title from '../components/Title'
@@ -386,6 +385,7 @@ export default function SupervisorReview() {
                 <Row className="my-5">
                     <Col>
                         <UserInfo name={Auth.name} department={Auth.role} userCallback={handleUserChanges} year={appraisal.appraisalYear} />
+
                     </Col>
                 </Row>
                 <Row className="g-0 p-2">
@@ -424,4 +424,4 @@ export default function SupervisorReview() {
         </>
     );
 }
->>>>>>> Stashed changes
+

@@ -1,13 +1,9 @@
 import React from "react";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
-<<<<<<< Updated upstream
-import { Link } from 'react-router-dom'
-=======
 import { Link, useNavigate } from 'react-router-dom'
 import Auth from '../services/storage'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignOutAlt } from '@fortawesome/fontawesome-free-solid'
->>>>>>> Stashed changes
 
 const Navigation = () => {
     let navigate = useNavigate()
@@ -16,6 +12,7 @@ const Navigation = () => {
         { title: "Supervisor Queue", route: "/Supervisor" },
         { title: "HR Queue", route: "/Hr" },
         { title: "Self Assessment", route: "/Assessment" },
+        { title: "Supervisor Review", route: "/SupervisorReview" }
     ];
     const Logout = () => {
         let Auth = {
@@ -29,7 +26,7 @@ const Navigation = () => {
     }
     return (
         <>
-            <Navbar style={{ backgroundColor: "#4852b0" }} variant="dark" expand="lg">
+            <Navbar style={{ backgroundColor: "#4852B0" }} variant="dark" expand="lg">
                 <Container>
                     <Navbar.Brand href="#home">
                         <img
@@ -41,9 +38,8 @@ const Navigation = () => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav" className="text-white">
                         <Nav className="ms-auto" style={{ color: "white" }}>
-                            <NavDropdown title="Alden Recharge" id="basic-nav-dropdown">
+                            <NavDropdown title={Auth.email} id="basic-nav-dropdown">
                                 {navigations.map((nav, index) => (
-
                                     <NavDropdown.Item
                                         className=""
                                     >
@@ -57,15 +53,10 @@ const Navigation = () => {
                                 ))}
                             </NavDropdown>
 
-<<<<<<< Updated upstream
-                            <Link className="text-decoration-none text-muted " to="/Login">
-                                LOGOUT
-                            </Link>
-=======
+
                             <button onClick={Logout} className="d-flex  align-items-center text-decoration-none" to="/Login" style={{ color: "#e1e1e1" }}>
                                 <FontAwesomeIcon icon={faSignOutAlt} />
                             </button>
->>>>>>> Stashed changes
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

@@ -4,7 +4,7 @@ export default function Title(props) {
     return (
         <div>
             <h2>{props.title}</h2>
-            <p className="text-muted">L{props.subtitle}</p>
+            <p className="text-muted">{props.subtitle}</p>
         </div>
     )
 }
