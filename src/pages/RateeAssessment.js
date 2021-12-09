@@ -8,6 +8,7 @@ import FormTable from "../components/FormTable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import Validation from "../components/Validation";
+import Success from '../components/Success'
 
 import Instance from "../services/axios";
 import Auth from "../services/storage";
@@ -328,14 +329,15 @@ export default function RateeAssessment() {
         // }, 2000);
 
     };
+    return (
+        <>
+            <Row Row className="mt-5 text-center" >
+                <Col>
+                    <Title title="Yearly Performance Appraisal" subtitle="For Review" />
+                </Col>
+            </Row>
 
-    const MyForm = () => {
-        if (success) {
-            return <Success />
-        }
-        else {
-            return <Form onSubmit={formSubmit} >
-
+            <Form onSubmit={formSubmit} >
                 <Row className="my-5">
                     <Col>
                         <UserInfo name={Auth.name} department={Auth.role} userCallback={handleUserChanges} />
@@ -372,18 +374,6 @@ export default function RateeAssessment() {
                     </Col>
                 </Row>
             </Form>
-
-        }
-    }
-    return (
-        <>
-            <Row Row className="mt-5 text-center" >
-                <Col>
-                    <Title title="Yearly Performance Appraisal" subtitle="For Review" />
-                </Col>
-            </Row>
-
-            <MyForm />
         </>
     );
 }
