@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Row, Col, Card, Form } from 'react-bootstrap'
-import Title from './Title'
+import { Row, Col, Form } from 'react-bootstrap'
+import Textarea from 'react-textarea-autosize';
+
 export default function FormTable(props) {
     let weightTotal = props.metrics
         .map((el) => parseFloat(el.weighted.value))
@@ -67,8 +68,7 @@ export default function FormTable(props) {
                     <Row className="g-0">
                         <Col className="d-flex align-items-center border border-1" >
                             <span className="px-3" >{index + 1}</span>
-                            <Form.Control
-                                as="textarea"
+                            <Textarea
                                 rows={1}
                                 onBlur={(evt) => handleChange(evt, index)}
                                 name="metric"
@@ -76,8 +76,9 @@ export default function FormTable(props) {
                                 defaultValue={props.type === "supervisor" ? el.metric : null}
                             />
                         </Col>
-                        <Col lg={1} className="column-border  border border-1">
+                        <Col lg={1} className="column-border text-end border border-1">
                             <Form.Control
+                                className="weight-textarea"
                                 as="textarea"
                                 rows={1}
                                 onBlur={(evt) => handleChange(evt, index)}
@@ -91,9 +92,8 @@ export default function FormTable(props) {
                                 defaultValue={props.type === "supervisor" ? el.weight.value : 0}
                             />
                         </Col>
-                        <Col className="column-border  border border-1">
-                            <Form.Control
-                                as="textarea"
+                        <Col className=" d-flex column-border align-items-center border border-1">
+                            <Textarea
                                 rows={1}
                                 onBlur={(evt) => handleChange(evt, index)}
                                 name="output"
@@ -109,6 +109,7 @@ export default function FormTable(props) {
                         </Col>
                         <Col lg={2} className="column-border  border border-1">
                             <Form.Control
+                                className="weight-textarea"
                                 as="textarea"
                                 rows={1}
                                 onBlur={(evt) => handleChange(evt, index)}
@@ -122,6 +123,7 @@ export default function FormTable(props) {
                         </Col>
                         <Col lg={2} className="column-border  border border-1">
                             <Form.Control
+                                className="weight-textarea"
                                 as="textarea"
                                 rows={1}
                                 onChange={(evt) => handleChange(evt, index)}
@@ -143,8 +145,8 @@ export default function FormTable(props) {
                 >
                     Total Rating
                 </Col>
-                <Col lg={2} className="column-border row-border">
-                    <Form.Control as="textarea" rows={1} defaultValue={total} readOnly />
+                <Col lg={2} className="column-border  row-border">
+                    <Form.Control className="weight-textarea" as="textarea" rows={1} defaultValue={total} readOnly />
 
                 </Col>
             </Row>
