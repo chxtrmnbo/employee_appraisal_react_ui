@@ -408,12 +408,21 @@ export default function SupervisorReview() {
                         />
                     </Col>
                 </Row>
+                <Row className="my-5 mt-5 g-0 p-2">
+                    <Col>
+                        <CommentBox
+                            title="Supervisor's Comments"
+                            comment={comment}
+                            commentCallback={handleCommentChanges}
+                        />
+                    </Col>
+                </Row>
                 <Row >
                     <Col>
                         <Validations errors={temp} />
                     </Col>
                 </Row>
-                <Row className="mt-5">
+                <Row className="mt-3">
                     <Col xl="2 offset-10" className="d-grid">
                         <SubmitButton />
                         {/* <Button className="text-white px-5" type="submit">Submit</Button> */}

@@ -332,7 +332,7 @@ export default function RateeAssessment() {
         <>
             <Row Row className="mt-5 text-center" >
                 <Col>
-                    <Title title="Yearly Performance Appraisal" subtitle="For Review" />
+                    <Title title="Yearly Performance Appraisal" subtitle="Self Assessment" />
                 </Col>
             </Row>
 
