@@ -42,7 +42,7 @@ export default function HrQueue() {
         <>
             <Row className="mt-5">
                 <Col>
-                    <Title title="Yearly Performance Appraisal" subtitle="For Review" />
+                    <Title title="Yearly Performance Appraisal" subtitle="Submissions" />
                 </Col>
             </Row>
             <GroupList appraisals={appraisals} />
