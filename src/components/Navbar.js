@@ -1,15 +1,32 @@
 import React from "react";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
+<<<<<<< Updated upstream
 import { Link } from 'react-router-dom'
+=======
+import { Link, useNavigate } from 'react-router-dom'
+import Auth from '../services/storage'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSignOutAlt } from '@fortawesome/fontawesome-free-solid'
+>>>>>>> Stashed changes
 
 const Navigation = () => {
+    let navigate = useNavigate()
     const navigations = [
         { title: "Login", route: "/Login" },
         { title: "Supervisor Queue", route: "/Supervisor" },
         { title: "HR Queue", route: "/Hr" },
         { title: "Self Assessment", route: "/Assessment" },
     ];
-
+    const Logout = () => {
+        let Auth = {
+            name: '',
+            email: '',
+            password: '',
+            role: 0
+        }
+        localStorage.setItem('user', JSON.stringify(Auth))
+        navigate("/Login")
+    }
     return (
         <>
             <Navbar style={{ backgroundColor: "#4852b0" }} variant="dark" expand="lg">
@@ -40,9 +57,15 @@ const Navigation = () => {
                                 ))}
                             </NavDropdown>
 
+<<<<<<< Updated upstream
                             <Link className="text-decoration-none text-muted " to="/Login">
                                 LOGOUT
                             </Link>
+=======
+                            <button onClick={Logout} className="d-flex  align-items-center text-decoration-none" to="/Login" style={{ color: "#e1e1e1" }}>
+                                <FontAwesomeIcon icon={faSignOutAlt} />
+                            </button>
+>>>>>>> Stashed changes
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

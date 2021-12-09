@@ -1,6 +1,15 @@
+<<<<<<< Updated upstream
 import React from 'react'
 import { Row, Col, ListGroup, Stack, Pagination } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+=======
+import React, { useEffect, useState } from 'react'
+
+import { Row, Col, ListGroup, Stack, Pagination, Card } from 'react-bootstrap'
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
+>>>>>>> Stashed changes
 
 import Title from '../components/Title'
 
