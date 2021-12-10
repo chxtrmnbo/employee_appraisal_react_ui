@@ -25,14 +25,19 @@ input.form-control {
   border: 1px solid #e3e3e3;
 }
 
-textarea.form-control {
+textarea {
   border: none !important;
   border-radius: 0;
-  resize: none !important
+  resize: none !important;
+  overflow: hidden;
+  width: 100%;
+  max-lines: 3;
 }
 
-.card:hover {
-  transform: 20%;
+
+.weight-textarea {
+  text-align: right;
+  height: 100%;
 }
 
 

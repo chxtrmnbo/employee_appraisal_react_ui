@@ -8,20 +8,20 @@ import Contents from '../components/Contents'
 
 export default function Error404() {
     return (
-        <div className="mb-2 ">
-            <Row>
-                <Col className=" mt-5 v-right item">
-                    <FontAwesomeIcon icon={faFrown} size="10x" />
+        <>
+            <Row className="m-auto g-0">
+                <Col className="d-flex flex-row-reverse  mt-5 ">
+                    <FontAwesomeIcon icon={faFrown} size="10x" className="justify-content-center" />
                 </Col>
-                <Col className=" mt-5 h-center text-left">
-                    <Title title="404 - PAGE NOT FOUND" />
+                <Col className=" mt-5  justify-content-center text-start " >
+                    <Title title="404 - PAGE NOT FOUND" className="" style={{ textAlignment: "left !important" }} />
                     <br></br>
                     <Contents content="The Page you are looking for might have been removed or had it's name changed" />
                     <Contents subContent="or is temporary unavailable." />
-                    <Redirect buttonName="HOME PAGE" className="rounded-pill" />
+                    <Redirect buttonName="HOME PAGE" />
                 </Col>
             </Row>
 
-        </div>
+        </>
     )
 }
