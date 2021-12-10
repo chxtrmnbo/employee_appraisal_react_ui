@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 
 // Reducers
 import userReducer from "./features/user";
+import appraisalsReducer from "./features/appraisals";
 
 
 
@@ -21,6 +22,7 @@ import App from './App';
 const store = configureStore({
   reducer: {
     user: userReducer,
+    appraisals: appraisalsReducer
   },
 });
 

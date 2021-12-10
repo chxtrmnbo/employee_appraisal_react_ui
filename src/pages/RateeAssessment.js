@@ -9,12 +9,28 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import Validation from "../components/Validation";
 import Success from '../components/Success'
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { SET_METRICS, SET_VALIDATED, submitAppraisal } from "../features/appraisals";
+import { userFetch } from "../features/user";
 
 import Instance from "../services/axios";
 import Auth from "../services/storage";
 
 
 export default function RateeAssessment() {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(userFetch())
+    }, []);
+
+    const appraisalData = useSelector((state) => state.appraisals.value.formData);
+    // const comment = useSelector((state) => state.appraisals.value.formData);
+
+    const user = useSelector((state) => state.user.value.user);
+
     const [success, setSuccess] = useState(false);
 
     const [userInfo, setUserInfo] = useState("");
@@ -150,13 +166,11 @@ export default function RateeAssessment() {
     };
     const addError = (errors) => {
         let errr = [...errors];
-
         var unique = errr.filter((v, i, a) => a.indexOf(v) === i);
         // console.log(unique)
         // console.log('temp:', errr)
         setErrors([]);
         setTemp(unique);
-
         // let checkError = errors.map(el => el).indexOf(error)
         // if (checkError == -1) {
         //   errors.push(error)
@@ -271,7 +285,19 @@ export default function RateeAssessment() {
         evt.preventDefault();
         await Validate(evt)
 
-        // let formData = Validate(evt)
+        // let formData = {
+        //     name: user.name,
+        //     appraisalYear: appraisalData.appraisalYear,
+        //     // metrics: appraisalData.appraisalYear,
+        // }
+        // console.log(formData)
+        // dispatch(submitAppraisal(formData))
+
+        let formData = {
+            ...Validate(evt),
+            name: user.name,
+            appraisalYear: appraisalData.appraisalYear,
+        }
         console.log(Validate(evt))
         if (temp.length == 0) {
             console.log('Form Submit')
@@ -287,46 +313,7 @@ export default function RateeAssessment() {
         else {
             console.log('Form cannot Submit')
         }
-
-        // // mt.forEach(element => {
-        // //   console.log(typeof element)
-
-        // // });
-
-
-
-        // // addError(errors)
-
-        // // console.log(temp)
-        // // met.weight.isValid = false
-
-        // let formData = {
-        //   employeeId: userInfo.name,
-        //   appraisalYear: /*parseInt(userInfo.year)*/ 1,
-        //   departmentId: /*parseInt(userInfo.department)*/ 2,
-        //   supervisorId: /*parseInt("Dummy")*/ 3,
-        //   totalWeightedRating: weightedTotal,
-        //   rateeComments: comment.comments,
-        //   supervisorComments: "",
-        //   metrics: mt,
-        // };
-
-        // // console.log(formData)
-        // if (temp.length == 0) {
-        //   // Instance.post("/appraisals", formData)
-        //   //   .then((res) => {
-        //   //     console.log('Submitted:')
-        //   //     console.log(res);
-        //   //   })
-        //   //   .catch((err) => {
-        //   //     console.error(err);
-        //   //   });
-        // }
-
-        // setTimeout(() => {
-        //   setLoading(false);
-        // }, 2000);
-
+        console.log(formData)
     };
     return (
         <>
@@ -355,6 +342,7 @@ export default function RateeAssessment() {
                 <Row className="my-5 g-0 p-2">
                     <Col>
                         <CommentBox
+                            type="ratee"
                             title="Ratee's Comments"
                             comment={comment}
                             commentCallback={handleCommentChanges}

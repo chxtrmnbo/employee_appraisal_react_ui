@@ -31,6 +31,9 @@ textarea.form-control {
   resize: none !important
 }
 
+.card:hover {
+  transform: 20%;
+}
 
 
 .btn-primary {

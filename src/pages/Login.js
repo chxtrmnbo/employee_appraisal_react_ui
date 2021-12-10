@@ -13,9 +13,9 @@ import Notification from '../components/Notification'
 export default function Loginform() {
     const dispatch = useDispatch();
 
-
     const dummy = useSelector((state) => state.user.dummy);
     const userState = useSelector((state) => state.user.value);
+
     console.log(userState)
 
     const [show, setShow] = useState(false)

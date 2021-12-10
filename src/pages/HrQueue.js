@@ -1,38 +1,47 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { fetchAppraisals, appraisalsState } from "../features/appraisals";
+import Overlay from '../components/Overlay';
 
 import { Row, Col, ListGroup, Stack, Pagination } from 'react-bootstrap'
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
-
 import Title from '../components/Title'
 import GroupList from '../components/GroupList'
-
+import TableError from '../components/TableError'
 import Instance from '../services/axios'
+import { userFetch } from "../features/user";
 
 export default function HrQueue() {
-    const [show, setShow] = useState(true)
-    const [appraisals, setAppraisals] = useState([])
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        Instance.get('/appraisals')
-            .then(res => {
-                console.log(res.data)
-                setAppraisals(res.data)
-            })
-            .catch(err => {
-                console.error(err);
-                setShow(false)
-            })
+        dispatch(userFetch())
     }, []);
+    const appraisalsState = useSelector((state) => state.appraisals.value);
+
+
+    const [show, setShow] = useState(true)
+    useEffect(() => {
+        dispatch(fetchAppraisals());
+    }, []);
+    const appraisals = useSelector((state) => state.appraisals.value.appraisals);
+
 
     const Loader = () => {
-        if (appraisals.length == 0) {
-            return (
-                <FontAwesomeIcon className="my-5" icon={faCircleNotch} spin size="8x" />
+        if (appraisalsState.isLoading) {
+            return (<Overlay />
+                // <FontAwesomeIcon className="my-5" icon={faCircleNotch} spin size="8x" />
             )
+        } else {
+            return null
         }
-        else {
+    }
+    const Error = () => {
+        if (appraisalsState.isError) {
+            return (<TableError />
+            )
+        } else {
             return null
         }
     }
@@ -46,6 +55,8 @@ export default function HrQueue() {
                 </Col>
             </Row>
             <GroupList appraisals={appraisals} />
+            <Loader />
+            <Error />
             <Row className="mt-5 px-5">
                 <Col className="d-flex justify-content-center">
                     <Pagination style={{ fontSize: '22px' }}>
