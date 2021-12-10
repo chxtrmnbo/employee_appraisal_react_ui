@@ -26,7 +26,6 @@ function App() {
     }
     else {
       return <Navigation />
-
     }
   }
   console.log(Auth.email)

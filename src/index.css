@@ -34,10 +34,12 @@ textarea {
   max-lines: 3;
 }
 
+
 .weight-textarea {
   text-align: right;
   height: 100%;
 }
+
 
 .btn-primary {
   background: #0052A0

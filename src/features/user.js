@@ -4,20 +4,20 @@ import axios from 'axios';
 // let navigate = useNavigate();
 let dummy = [
     {
-        name: 'Juan Ted',
-        email: 'juan@gmail.com',
+        name: 'Ratee Employee',
+        email: 'ratee@gmail.com',
         password: '1234',
         role: 1
     },
     {
-        name: 'Alden Richards',
-        email: 'alden@gmail.com',
+        name: 'Supervisor Employee',
+        email: 'supervisor@gmail.com',
         password: '1234',
         role: 2
     },
     {
-        name: 'Maine Mendoza',
-        email: 'maine@gmail.com',
+        name: 'Hr Employee',
+        email: 'hr@gmail.com',
         password: '1234',
         role: 3
     }
@@ -63,14 +63,12 @@ export const userSlice = createSlice({
 
     // Reducers
     reducers: {
+
         SET_LOGIN: (state, action) => {
             state.value = {
                 ...state.value,
                 ...action.payload
             };
-        },
-        setAppraisals: (state, action) => {
-            state.appraisals = action.payload;
         },
         setUser: (state, action) => {
             state.value = action.payload;
@@ -167,6 +165,11 @@ export const userLogin = (payload) => async dispatch => {
     //         }
     //     }
     // }
+}
+export const userFetch = (payload) => async dispatch => {
+    dispatch(SET_LOGIN({
+        user: JSON.parse(localStorage.getItem("user"))
+    }))
 }
 
 

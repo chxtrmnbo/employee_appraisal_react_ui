@@ -9,20 +9,27 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import Validation from "../components/Validation";
 import { useParams } from "react-router-dom";
-
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { userFetch } from "../features/user";
 import Instance from "../services/axios";
 import Auth from "../services/storage";
 
 export default function SupervisorReview() {
+    const dispatch = useDispatch();
+
     let { id } = useParams();
     const [rateeComment, setRateeComment] = useState({
         type: "ratee",
         comments: "",
     });
+    useEffect(() => {
+        dispatch(userFetch())
+    }, []);
     const [appraisal, setAppraisal] = useState({});
 
     const [userInfo, setUserInfo] = useState("");
-    const [comment, setComment] = useState("");
+    const [comment, setComment] = useState({});
     const [year, setYear] = useState(0);
     let [temp, setTemp] = useState([]);
     const [errors, setErrors] = useState([]);
@@ -58,9 +65,6 @@ export default function SupervisorReview() {
                 value: "",
                 isValid: true,
             },
-
-
-
             rating: {
                 value: 0,
                 isValid: true,
@@ -173,9 +177,8 @@ export default function SupervisorReview() {
                 // console.log(met)
                 console.log("COMMENT: ", res.data.rateeComments);
                 setRateeComment({
-                    ...rateeComment,
                     type: "ratee",
-                    comments: res.data.rateeComments,
+                    value: res.data.rateeComments,
                 });
                 metrics.splice(1, res.data.metrics.length);
                 let met = res.data.metrics.concat(metrics);
@@ -403,7 +406,17 @@ export default function SupervisorReview() {
                     <Col>
                         <CommentBox
                             title="Ratee's Comments"
-                            comment={comment}
+                            type="ratee"
+                            comment={rateeComment}
+                            commentCallback={handleCommentChanges}
+                        />
+                    </Col>
+                </Row>
+                <Row className="my-5 g-0 p-2">
+                    <Col>
+                        <CommentBox
+                            title="Supervisor's Comments"
+                            type="supervisor"
                             commentCallback={handleCommentChanges}
                         />
                     </Col>
@@ -422,14 +435,15 @@ export default function SupervisorReview() {
                         <Validations errors={temp} />
                     </Col>
                 </Row>
-                <Row className="mt-3">
+
+                <Row className="my-5">
+
                     <Col xl="2 offset-10" className="d-grid">
                         <SubmitButton />
                         {/* <Button className="text-white px-5" type="submit">Submit</Button> */}
                     </Col>
                 </Row>
             </Form>
-            <p>{JSON.stringify(metrics)}</p>
         </>
     );
 }

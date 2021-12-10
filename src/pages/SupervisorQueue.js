@@ -2,65 +2,59 @@
 import React, { useEffect, useState } from 'react'
 
 import { Row, Col, ListGroup, Stack, Pagination, Card } from 'react-bootstrap'
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
+import { fetchAppraisals } from "../features/appraisals";
 
-
+import TableError from '../components/TableError'
 import Title from '../components/Title'
+import Overlay from '../components/Overlay'
 import GroupList from '../components/GroupList'
 
-import Instance from '../services/axios'
-
+import { userFetch } from "../features/user";
 export default function SupervisorQueue() {
-    const [show, setShow] = useState(true)
-    const [appraisals, setAppraisals] = useState([])
 
+    // Redux
+    const dispatch = useDispatch();
     useEffect(() => {
-        Instance.get('/appraisals')
-            .then(res => {
-                console.log(res.data)
-                setAppraisals(res.data)
-            })
-            .catch(err => {
-                console.error(err);
-                setShow(false)
-            })
+        dispatch(userFetch())
+        dispatch(fetchAppraisals());
     }, []);
+    const appraisals = useSelector((state) => state.appraisals.value.appraisals);
+    const appraisalsState = useSelector((state) => state.appraisals.value);
 
     const Loader = () => {
-        if (appraisals.length == 0) {
-            return (
-                <FontAwesomeIcon className="my-5" icon={faCircleNotch} spin size="8x" />
+        if (appraisalsState.isLoading) {
+            return (<Overlay />
+                // <FontAwesomeIcon className="my-5" icon={faCircleNotch} spin size="8x" />
             )
-        }
-        else {
+        } else {
             return null
         }
     }
-
-
+    const Error = () => {
+        if (appraisalsState.isError) {
+            return (<TableError />
+            )
+        } else {
+            return null
+        }
+    }
     return (
         <>
+
             <Row className="mt-5">
                 <Col>
                     <Title title="Yearly Performance Appraisal" subtitle="For Review" />
                 </Col>
             </Row>
+            <Loader />
+            <Error />
             <GroupList appraisals={appraisals} />
-            <Row className="mt-5 px-5">
-                <Col className="d-flex justify-content-center">
-                    <Pagination style={{ fontSize: '22px' }}>
-                        <Pagination.First>First</Pagination.First>
-                        <Pagination.Prev>Prev</Pagination.Prev>
-                        <Pagination.Item>{1}</Pagination.Item>
-                        <Pagination.Ellipsis />
-                        <Pagination.Item>{8}</Pagination.Item>
-                        <Pagination.Next>Next</Pagination.Next>
-                        <Pagination.Last>Last</Pagination.Last>
-                    </Pagination>
-                </Col>
-            </Row>
+
         </>
     )
 }
